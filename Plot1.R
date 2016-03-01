@@ -1,0 +1,12 @@
+x<-read.table(file = "C:/Users/vinay.agrawal/Downloads/household_power_consumption.txt", sep = ";", header=TRUE)
+y<-x
+y$Date<-as.Date(x=y$Date, format="%d/%m/%Y")
+y$Time<-strptime(x=as.character(y$Time), format = %H:%M:%S)
+z<-subset(y, y$Date=="2007-02-01" | y$Date=="2007-02-02")
+z$Sub_metering_2<-as.numeric(z$Sub_metering_2)
+z$Sub_metering_1<-as.numeric(z$Sub_metering_1)
+z$Global_intensity<-as.numeric(z$Global_intensity)
+z$Global_active_power<-as.numeric(z$Global_active_power)
+z$Global_reactive_power<-as.numeric(z$Global_reactive_power)
+z$Voltage<-as.numeric(z$Voltage)
+hist(z$Global_active_power, col="red", main = "Global Active Power", xlab="Global Active Power (kilowatts)")
